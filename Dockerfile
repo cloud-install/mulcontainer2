@@ -150,7 +150,7 @@ RUN set -eux; \
 COPY start.sh /usr/bin/start.sh
 
 RUN apt update; \
-    apt install -y runit; \
+    apt install -y supervisor; \
     mkdir /usr/local/tomcat2; \
     chmod +x /usr/bin/start.sh; \
     mkdir /opt/service; \
@@ -162,14 +162,13 @@ RUN apt update; \
 
 COPY server.xml /usr/local/tomcat2/conf/
 COPY catalina.sh /usr/local/tomcat2/bin/
-COPY tomcat1/ /opt/service/tomcat1/
-COPY tomcat2/ /opt/service/tomcat2/
 COPY index.jsp /usr/local/tomcat/webapps/ROOT/
 COPY index.jsp /usr/local/tomcat2/webapps/ROOT/
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-RUN chmod +x /opt/service/tomcat1/run /opt/service/tomcat2/run /usr/local/tomcat2/bin/catalina.sh /usr/local/tomcat/bin/catalina.sh
+RUN chmod +x /usr/local/tomcat2/bin/catalina.sh /usr/local/tomcat/bin/catalina.sh
 
 EXPOSE 8080 8090 80
 
 #CMD ["catalina.sh","run"]
-CMD ["/usr/bin/start.sh"]
+CMD ["/usr/bin/supervisord"]
