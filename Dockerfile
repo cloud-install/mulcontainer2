@@ -147,14 +147,10 @@ RUN set -eux; \
 		exit 1; \
 	fi
 
-COPY start.sh /usr/bin/start.sh
 
 RUN apt update; \
     apt install -y supervisor; \
     mkdir /usr/local/tomcat2; \
-    chmod +x /usr/bin/start.sh; \
-    mkdir /opt/service; \
-    ls /opt; \
     cp -r /usr/local/tomcat/* /usr/local/tomcat2; \
     rm -f /usr/local/tomcat2/conf/server.xml /usr/local/tomcat2/bin/catalina.sh; \
     mkdir /usr/local/tomcat2/webapps/ROOT; \
