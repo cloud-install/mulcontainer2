@@ -4,7 +4,7 @@ services:
 
   tomcats:
     container_name: tomcats
-    image: mtomcat
+    image: supervisord
     restart: always
     ports:
        - '9009:80'
