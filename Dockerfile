@@ -155,7 +155,7 @@ RUN apt update; \
     rm -f /usr/local/tomcat2/conf/server.xml /usr/local/tomcat2/bin/catalina.sh; \
     mkdir /usr/local/tomcat2/webapps/ROOT; \
     mkdir /usr/local/tomcat/webapps/ROOT; \
-    wget /data/wwwroot http://mirrors.jenkins.io/war-stable/latest/jenkins.war -P /opt
+    wget  http://mirrors.jenkins.io/war-stable/latest/jenkins.war -P /opt
 
 COPY server.xml /usr/local/tomcat2/conf/
 COPY catalina.sh /usr/local/tomcat2/bin/
