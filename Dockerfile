@@ -148,9 +148,7 @@ RUN set -eux; \
 	fi
 
 
-RUN apt update; \
-    apt install -y supervisor; \
-    mkdir /usr/local/tomcat2; \
+RUN mkdir /usr/local/tomcat2; \
     cp -r /usr/local/tomcat/* /usr/local/tomcat2; \
     rm -f /usr/local/tomcat2/conf/server.xml /usr/local/tomcat2/bin/catalina.sh; \
     mkdir /usr/local/tomcat2/webapps/ROOT; \
