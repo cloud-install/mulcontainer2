@@ -162,10 +162,11 @@ COPY catalina.sh /usr/local/tomcat2/bin/
 COPY index.jsp /usr/local/tomcat/webapps/ROOT/
 COPY index.jsp /usr/local/tomcat2/webapps/ROOT/
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY cmd.sh /usr/bin/
 
-RUN chmod +x /usr/local/tomcat2/bin/catalina.sh /usr/local/tomcat/bin/catalina.sh
+RUN chmod +x /usr/local/tomcat2/bin/catalina.sh /usr/local/tomcat/bin/catalina.sh /usr/bin/cmd.sh
 
 EXPOSE 8080 8090 80
 
 #CMD ["catalina.sh","run"]
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/cmd.sh"]
